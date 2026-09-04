@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>微博 Cookie 同步设置</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <div class="page-header">
+      <div>
+        <h1>微博 Cookie 同步设置</h1>
+        <p class="subtitle">管理微博登录态与青龙 Open API 连接</p>
+      </div>
+      <span class="version">v1.0.0</span>
+    </div>
+    <p class="hint">青龙地址填写面板根地址，例如 <code>https://ql.example.com</code>，不要填写末尾的 <code>/open</code>。</p>
+
+    <label>青龙 Open API 地址
+      <input id="qlBaseUrl" type="url" placeholder="https://ql.example.com">
+    </label>
+    <label>青龙连接方式
+      <select id="qlConnectionMode">
+        <option value="mtls">mTLS（HTTPS，证书由 Chrome 选择）</option>
+        <option value="https">普通 HTTPS</option>
+        <option value="http">HTTP（仅限内网测试）</option>
+      </select>
+      <span class="field-help">mTLS 证书由 Chrome/系统证书库选择，扩展不保存私钥。</span>
+    </label>
+    <label>Client ID
+      <input id="qlClientId" type="text" autocomplete="off">
+    </label>
+    <label>Client Secret
+      <input id="qlClientSecret" type="password" autocomplete="off">
+    </label>
+    <label>环境变量名
+      <input id="envName" type="text" value="WEIBO_CONFIGS_JSON">
+    </label>
+    <label>变量备注
+      <input id="envRemarks" type="text" value="微博超话签到账号配置">
+    </label>
+    <label class="checkbox">
+      <input id="autoSync" type="checkbox">
+      Cookie 变化后自动同步（需要已打开微博页面）
+    </label>
+
+    <div class="actions">
+      <button id="grant">授权青龙地址</button>
+      <button id="save" class="primary">保存设置</button>
+      <button id="test">测试连接</button>
+    </div>
+    <p id="result" class="result"></p>
+
+    <section>
+      <h2>使用方式</h2>
+      <ol>
+        <li>在青龙“系统设置 → 应用设置”创建应用，取得 Client ID 和 Client Secret。</li>
+        <li>安装后在微博页面登录，点击扩展图标中的“读取当前账号并同步”。</li>
+        <li>青龙脚本继续读取 <code>WEIBO_CONFIGS_JSON</code>；扩展会按 UID 更新或追加账号。</li>
+      </ol>
+    <p class="hint">Cookie 失效后无法静默生成新 Cookie；重新登录或扫码后，扩展会在 Cookie 变化时再次同步。mTLS 客户端证书由 Chrome/系统证书库提供，扩展本身不保存私钥。</p>
+    </section>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>

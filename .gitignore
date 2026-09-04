@@ -1,0 +1,13 @@
+# Local secrets and client-certificate material
+.env
+*.p12
+*.pfx
+*.key
+*.pem
+*.crt
+
+# Local/editor and generated files
+.DS_Store
+Thumbs.db
+node_modules/
+dist/

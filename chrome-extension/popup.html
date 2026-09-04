@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>微博 Cookie 同步</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <header class="header">
+      <div class="brand">
+        <img src="icon.svg" alt="微博">
+        <div>
+          <h1>微博 Cookie 同步</h1>
+          <span class="version">v1.0.0</span>
+        </div>
+      </div>
+      <span id="connection" class="badge">未配置</span>
+    </header>
+
+    <section class="card account-card">
+      <div class="card-title">同步状态</div>
+      <p id="status" class="muted">正在读取状态…</p>
+    </section>
+
+    <button id="sync" class="primary">读取当前账号并同步</button>
+    <div class="button-row">
+      <button id="login">打开微博登录页</button>
+      <button id="test">测试青龙连接</button>
+    </div>
+    <button id="options" class="link-button">打开设置</button>
+    <p id="result" class="result" role="status" aria-live="polite"></p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
